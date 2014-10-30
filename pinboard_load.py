@@ -45,7 +45,9 @@ class BulkPostWrapper(PostWrapper):
 	def format_post(self, post):
 		wrap = self.meta_dict.copy()
 		wrap.update({
-			"_source": post
+			"_source": post,
+			"_id": post["hash"],
+			"_timestamp": post["time"]
 		})
 		return wrap	
 
