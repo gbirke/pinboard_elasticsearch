@@ -12,7 +12,8 @@ if not es.indices.exists(index=INDEX_NAME):
 post_mapping = {
 	"_timestamp": { 
 		"enabled": True,
-		"path": "time"
+		"path": "time",
+		"format":"date_time_no_millis"
 	},
 	"_id": {
 		"path": "hash"
@@ -32,11 +33,11 @@ post_mapping = {
 			}
 		},
 		"href": {"type" : "string"},
-		"unread": {"type": "boolean"},
+		"toread": {"type": "boolean"},
 		"shared": {"type": "boolean"},
 		"hash": {"type": "string", "index": "not_analyzed" },
 		"meta": {"type": "string", "index": "not_analyzed" },
-		"time": {"type": "date"}
+		"time": {"type": "date", "format":"date_time_no_millis"}
 	}
 }
 es.indices.put_mapping(index=INDEX_NAME, doc_type="post", body=post_mapping)
