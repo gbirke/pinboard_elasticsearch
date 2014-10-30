@@ -1,0 +1,14 @@
+{
+    "query":{
+        "filtered": {
+            "query": {
+                "match_all":{}
+            },
+            "filter":{
+                "range":{
+                    "tags.cnt": {"gte":0}
+                }
+            }
+        }
+    }
+}
