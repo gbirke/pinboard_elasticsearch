@@ -3,7 +3,7 @@
 This a a collection of small Python scripts to import Pinboard posts in ElasticSearch.
 
 ## Usage
-Until these scripts have developed into a coherent update process, you'll have to manually call three scripts:
+Until these scripts are developed into a coherent update process, you'll have to manually call three scripts:
 
     python init_el.py
 
@@ -20,3 +20,5 @@ Finally store all the posts form the file in Elasticsearch:
 
 ## Pinboard library
 Pinboard library is from https://github.com/mgan59/python-pinboard
+
+The "pinboard" library from PyPI is too complicated for this purpose.
