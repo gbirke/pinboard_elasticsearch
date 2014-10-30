@@ -8,6 +8,7 @@ from elasticsearch.helpers import bulk
 es = Elasticsearch()
 
 def test1():
+	""" Test normal posting interface and interaction with PostWrapper"""
 	post = pinboard_load.get_posts(date="2014-10-29", count=1).next()
 	es.create(**post)
 
@@ -24,17 +25,16 @@ def dummy_post():
 	}
 
 def test2():
+	""" Test normal posting interface with defined data"""
 	post = dummy_post()
 	es.create(**post)
 
 def test3():
+	""" Load all pickled post data into Elasticsearch with bulk API"""
 	post_data = pickle.load(open("posts.p", "rb"))
 	#post_data = [dummy_post()["body"]]
 	posts = pinboard_load.BulkPostWrapper(post_data, {"_index":"pinboard", "_type":"post"})
 	print bulk(es, posts)
-
-
-
 
 if __name__ == '__main__':
 	#es.indices.refresh("pinboard")

@@ -56,12 +56,15 @@ if __name__ == '__main__':
 	import sys
 	try:
 		PINBOARD_TOKEN = sys.argv[1]
-		for p in get_posts(date="2014-10-29"):
-			pprint.pprint(p)
-		#store_all_posts()
 	except IndexError:
 		print "Error: No API token\n"
 		print "Usage: {} PINBOARD_API_TOKEN".format(sys.argv[0])
+
+	if len(sys.argv) > 2 and sys.argv[2] == "test":
+		for p in get_posts(date="2014-10-29"):
+			pprint.pprint(p)
+	else:
+		store_all_posts()
 
 
 
