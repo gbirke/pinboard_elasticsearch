@@ -1,28 +1,10 @@
 {
     "post": {
-        "_timestamp": { 
-            "enabled": true,
-            "path": "time",
-            "format": "date_time_no_millis",
-            "store": true
-        },
-        "_id": {
-            "path": "hash"
-        },
         "dynamic": "strict",
         "properties": {
             "description": {"type" : "string"},
             "extended": {"type" : "string"},
-            "tags": {
-                "type" : "string",
-                "fields": {
-                    "cnt": {
-                        "type" : "token_count",
-                        "store" : "yes",
-                        "analyzer" : "standard"
-                    }
-                }
-            },
+            "tags": {"type" : "string"},
             "href": {"type" : "string"},
             "toread": {"type": "boolean"},
             "shared": {"type": "boolean"},
