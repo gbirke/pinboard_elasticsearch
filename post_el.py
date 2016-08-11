@@ -21,13 +21,14 @@ def dummy_post():
 	          u'hash': u'09f4b04da9d9249e501aa5a3f145f273',
 	          u'toread': False},
 	 'doc_type': 'post',
-	 'index': 'pinboard'
+	 'index': 'pinboard',
+	 'id': u'09f4b04da9d9249e501aa5a3f145f273'
 	}
 
 def test2():
 	""" Test normal posting interface with defined data"""
 	post = dummy_post()
-	es.create(**post)
+	print es.create(**post)
 
 def test3():
 	""" Load all pickled post data into Elasticsearch with bulk API"""
