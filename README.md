@@ -37,3 +37,81 @@ curl -H "Content-Type: application/x-ndjson" -XPOST localhost:9200/pinboard/_doc
 ```
 
 See https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+
+## Queries
+
+All queries are GET requests to `localhost:9200/pinboard/_search`
+
+### Get tag top 100 count of all tags
+
+```JSON
+{
+    "size": 0,
+    "aggregations": {
+        "tag": {
+            "terms": {
+              "field": "tags",
+              "size": 100
+            }
+        }
+    }
+}
+```
+
+### Get tag counts for query
+```JSON
+{
+  "query": {
+    "match": {
+      "tags": "health"
+    }
+  },
+  "aggregations": {
+    "tag_c": {
+      "terms": {
+        "field": "tags",
+        "size": 100
+      }
+    }
+  }
+}
+```
+
+You can add the `aggregations` section to any query to get the tag count for that query.
+
+### Querying for bookmarks that have certain tags, excluding some other tags
+```JSON
+{
+  "sort": [
+    {
+      "time": {
+        "order": "desc"
+      }
+    },
+    "_score"
+  ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "tags": "javascript"
+          }
+        },
+        {
+          "term": {
+            "tags": "library"
+          }
+        }
+      ],
+      "mustNot": [
+        {
+          "term": {
+            "tags": "ajax"
+          }
+        }
+      ]
+    }
+  }
+}
+```
