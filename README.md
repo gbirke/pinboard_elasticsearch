@@ -25,6 +25,10 @@ curl -XPOST 'localhost:9200/pinboard/_doc/1?pretty' -H "Content-Type: applicatio
 
     curl 'https://api.pinboard.in/v1/posts/get?auth_token=archangel:XXX&format=json&dt=2018-11-23' > posts.json
 
+To download all bookmarks, use
+
+    curl 'https://api.pinboard.in/v1/posts/all?auth_token=archangel:XXX&format=json' > all_posts.json
+
 Replace the `XXX` placeholder with your API token.
 
 ## Convert JSON result set to bulk format
