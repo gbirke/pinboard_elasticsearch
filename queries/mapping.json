@@ -1,16 +1,39 @@
 {
-    "post": {
-        "dynamic": "strict",
-        "properties": {
-            "description": {"type" : "string"},
-            "extended": {"type" : "string"},
-            "tags": {"type" : "string"},
-            "href": {"type" : "string"},
-            "toread": {"type": "boolean"},
-            "shared": {"type": "boolean"},
-            "hash": {"type": "string", "index": "not_analyzed" },
-            "meta": {"type": "string", "index": "not_analyzed" },
-            "time": {"type": "date", "format":"date_time_no_millis"}
+  "mappings": {
+    "_doc": {
+      "dynamic": false,
+      "properties": {
+        "description": {
+          "type": "text"
+        },
+        "extended": {
+          "type": "text"
+        },
+        "tags": {
+          "type": "text"
+        },
+        "href": {
+          "type": "text"
+        },
+        "toread": {
+          "type": "boolean"
+        },
+        "shared": {
+          "type": "boolean"
+        },
+        "hash": {
+          "type": "text",
+          "index": false
+        },
+        "meta": {
+          "type": "text",
+          "index": false
+        },
+        "time": {
+          "type": "date",
+          "format": "date_time_no_millis"
         }
+      }
     }
+  }
 }

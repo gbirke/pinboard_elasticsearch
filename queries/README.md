@@ -3,12 +3,14 @@ The queries in this folder replicate the Python examples. They are for testing.
 
 ## Set up index and mapping
 
-    curl -XPUT 'localhost:9200/pinboard_json?pretty"
-    curl -XPUT 'localhost:9200/pinboard_json/_mapping/post?pretty' -d@queries/mapping.json
+    curl -XPUT 'localhost:9200/pinboard/?pretty' -H "Content-Type: application/json" -d@queries/mapping.json
+
+## Delete index (to create new mapping)
+
+    curl -XDELETE 'localhost:9200/pinboard/?pretty'
 
 ## Import document
-    curl -XPOST 'localhost:9200/pinboard_json/post?pretty' -d@queries/post_document.json
+    curl -XPOST 'localhost:9200/pinboard/_doc/1?pretty' -H "Content-Type: application/json" -d@queries/post_document.json
 
 ## Delete document
-    curl -XDELETE 'localhost:9200/pinboard_json/post/09f4b04da9d9249e501aa5a3f145f273?q=*&pretty'
-
+    curl -XDELETE 'localhost:9200/pinboard/post/1?pretty'
