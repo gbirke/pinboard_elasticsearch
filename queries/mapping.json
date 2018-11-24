@@ -10,7 +10,14 @@
           "type": "text"
         },
         "tags": {
-          "type": "text"
+          "type": "text",
+          "fields": {
+            "cnt": {
+              "type": "token_count",
+              "store": true,
+              "analyzer": "standard"
+            }
+          }
         },
         "href": {
           "type": "text"
