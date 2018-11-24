@@ -1,5 +1,9 @@
-# Example queries
-The queries in this folder replicate the Python examples. They are for testing.
+# Import Pinboard data into Elasticsearch
+
+Prerequisites:
+* An Elasticsearch instance running at localhost:9200
+* curl
+* [jq](https://stedolan.github.io/jq/)
 
 ## Set up index and mapping
 
@@ -28,5 +32,8 @@ Replace the `XXX` placeholder with your API token.
     jq --from-file posts2bulk.jq -c  posts.json > posts.ndjson
 
 ## Post bulk data
+```bash
+curl -H "Content-Type: application/x-ndjson" -XPOST localhost:9200/pinboard/_doc/_bulk --data-binary "@posts.ndjson"
+```
 
-    curl -H "Content-Type: application/x-ndjson" -XPOST localhost:9200/pinboard/_doc/_bulk --data-binary "@posts.ndjson"
+See https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
