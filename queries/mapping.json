@@ -17,7 +17,6 @@
   },
   "mappings": {
     "_doc": {
-      "dynamic": false,
       "properties": {
         "description": {
           "type": "text"
