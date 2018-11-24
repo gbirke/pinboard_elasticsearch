@@ -3,7 +3,7 @@ The queries in this folder replicate the Python examples. They are for testing.
 
 ## Set up index and mapping
 
-    curl -XPUT 'localhost:9200/pinboard/?pretty' -H "Content-Type: application/json" -d@queries/mapping.json
+    curl -XPUT 'localhost:9200/pinboard/?pretty' -H "Content-Type: application/json" -d@mapping.json
 
 ## Delete index (to create new mapping)
 
@@ -11,7 +11,7 @@ The queries in this folder replicate the Python examples. They are for testing.
 
 ## Import document
 ```bash
-curl -XPOST 'localhost:9200/pinboard/_doc/1?pretty' -H "Content-Type: application/json" -d@queries/post_document.json
+curl -XPOST 'localhost:9200/pinboard/_doc/1?pretty' -H "Content-Type: application/json" -d@post_document.json
 ```
 
 ## Delete document
@@ -25,7 +25,7 @@ Replace the `XXX` placeholder with your API token.
 
 ## Convert JSON result set to bulk format
 
-    jq --from-file queries/posts2bulk.jq -c  posts.json > posts.ndjson
+    jq --from-file posts2bulk.jq -c  posts.json > posts.ndjson
 
 ## Post bulk data
 
