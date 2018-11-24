@@ -1,4 +1,20 @@
 {
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "hostname_analyzer": {
+          "tokenizer": "hostname_tokenizer"
+        }
+      },
+      "tokenizer": {
+        "hostname_tokenizer": {
+          "type": "pattern",
+          "pattern": "^([a-z]+:)?//([^/:]+).*$",
+          "group": 1
+        }
+      }
+    }
+  },
   "mappings": {
     "_doc": {
       "dynamic": false,
@@ -20,7 +36,14 @@
           }
         },
         "href": {
-          "type": "text"
+          "type": "text",
+          "fields": {
+            "hostname": {
+              "type": "text",
+              "store": true,
+              "analyzer": "hostname_analyzer"
+            }
+          }
         },
         "toread": {
           "type": "boolean"
