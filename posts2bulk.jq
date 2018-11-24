@@ -10,6 +10,9 @@
 | .shared = .shared == "yes"
 | .toread = .toread == "yes"
 
+# Split tags
+| .tags = ( .tags | split(" ") ) 
+
 # Generate a bulk object creation array - first entry is the create command,
 # second entry is the document
 | [

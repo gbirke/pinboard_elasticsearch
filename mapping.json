@@ -25,7 +25,7 @@
           "type": "text"
         },
         "tags": {
-          "type": "text",
+          "type": "keyword",
           "fields": {
             "cnt": {
               "type": "token_count",
